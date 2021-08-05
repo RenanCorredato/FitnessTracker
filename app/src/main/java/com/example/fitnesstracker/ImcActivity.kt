@@ -30,7 +30,7 @@ class ImcActivity : AppCompatActivity() {
                 ).show()
             }
 
-            // Caputando o os dados do usuario
+            // Caputando os dados do usuário
 
             val sHeight = binding.edtImcHeight.text.toString().toDouble()
             val sWeight = binding.edtImcWeight.text.toString().toDouble()
@@ -40,7 +40,6 @@ class ImcActivity : AppCompatActivity() {
             val imcResponseID = imcResponse(result)
 
             //Dialog - com as informações do IMC
-
             val builder = AlertDialog.Builder(this)
             with(builder) {
                 setTitle(getString(R.string.imc_response, result))
@@ -50,7 +49,8 @@ class ImcActivity : AppCompatActivity() {
 
                 create()
                 show()
-                // escode o teclado no clik do botão
+
+                // Esconde o teclado no clik do botão
                 val imm: InputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                 imm.hideSoftInputFromWindow(binding.edtImcWeight.windowToken, 0)
                 imm.hideSoftInputFromWindow(binding.edtImcWeight.windowToken, 0)
@@ -93,7 +93,7 @@ class ImcActivity : AppCompatActivity() {
 
     }
 
-    // função que valida se o campo está vazio ou como zero
+    // Função que valida se o campo está vazio ou como zero
     fun validate(): Boolean {
         return with(binding) {
             !edtImcHeight.text.toString().startsWith("0")
