@@ -21,18 +21,20 @@
 
         <EditText
             android:id="@+id/edt_imc_weight"
-            android:hint="@string/weight"
-            style="@style/EditTextForm"/>
+            style="@style/EditTextForm"
+            android:hint="@string/weight" />
 
 
         <EditText
             android:id="@+id/edt_imc_height"
-            android:hint="@string/height"
-            style="@style/EditTextForm" />
+            style="@style/EditTextForm"
+            android:hint="@string/height" />
 
         <Button
+            android:id="@+id/btnImcSend"
             style="@style/ButtonForm"
-            android:id="@+id/btn_imc_send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="@string/calc" />
 
     </LinearLayout>

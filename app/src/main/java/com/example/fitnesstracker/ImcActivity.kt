@@ -2,11 +2,9 @@ package com.example.fitnesstracker
 
 import android.content.Context
 import android.content.DialogInterface
-import android.hardware.input.InputManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.inputmethod.InputMethod
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.annotation.StringRes
@@ -24,7 +22,7 @@ class ImcActivity : AppCompatActivity() {
 
         binding.btnImcSend.setOnClickListener {
             if (!validate()) {
-                Toast.makeText(
+                return@setOnClickListener Toast.makeText(
                     this,
                     R.string.fields_message, Toast.LENGTH_LONG
                 ).show()
@@ -32,7 +30,7 @@ class ImcActivity : AppCompatActivity() {
 
             // Caputando os dados do usuário
 
-            val sHeight = binding.edtImcHeight.text.toString().toDouble()
+            val sHeight = binding.edtImcHeight.text.toString().toFloat()
             val sWeight = binding.edtImcWeight.text.toString().toDouble()
             val result = calculateIMC(sHeight, sWeight)
             Log.d("Teste", "Resultado: $result")
@@ -51,7 +49,8 @@ class ImcActivity : AppCompatActivity() {
                 show()
 
                 // Esconde o teclado no clik do botão
-                val imm: InputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                val imm: InputMethodManager =
+                    getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                 imm.hideSoftInputFromWindow(binding.edtImcWeight.windowToken, 0)
                 imm.hideSoftInputFromWindow(binding.edtImcWeight.windowToken, 0)
 
@@ -87,7 +86,7 @@ class ImcActivity : AppCompatActivity() {
     }
 
     // Função calcula IMC
-    private fun calculateIMC(height: Double, weight: Double): Double {
+    private fun calculateIMC(height: Float, weight: Double): Double {
         // peso / (altura * altura)
         return weight / (height * height) * 10000
 
