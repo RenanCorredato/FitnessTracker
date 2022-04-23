@@ -2,11 +2,13 @@ package com.example.fitnesstracker
 
 import android.content.Context
 import android.content.DialogInterface
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AlertDialog
 import com.example.fitnesstracker.databinding.ActivityImcBinding
@@ -15,6 +17,7 @@ class ImcActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityImcBinding
 
+    @RequiresApi(Build.VERSION_CODES.CUPCAKE)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityImcBinding.inflate(layoutInflater)
@@ -42,9 +45,8 @@ class ImcActivity : AppCompatActivity() {
             with(builder) {
                 setTitle(getString(R.string.imc_response, result))
                 setMessage(imcResponseID)
-                setPositiveButton(R.string.ok, DialogInterface.OnClickListener { dialog, id ->
-                })
-
+                setPositiveButton(R.string.ok) { dialog, id ->
+                }
                 create()
                 show()
 
